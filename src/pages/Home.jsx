@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import person from '../assets/person.png';
 import tomato from '../assets/tomato.jpg';
 import pineapple from '../assets/pineapple.jpg';
-
+import bellpaper from '../assets/bellpaper.jpg';
+import carrot from '../assets/carrot.jpg';
 import pumpkin from '../assets/pumpkin.jpg';
 
-function Home(){
-    return(
+function Home() {
+    const [imagesLoaded, setImagesLoaded] = useState(false);
+
+    const loadImages = () => {
+        
+        setTimeout(() => {
+            setImagesLoaded(true);
+        }, 1000); // Adjust the delay as needed
+    };
+
+    return (
         <div className="container-fluid">
             <div className="flex">
                 <div className="w-1/4">
@@ -18,9 +28,9 @@ function Home(){
                     <div className="flex items-center">
                         <div>
                             <h1 className="text-2xl">Dashboard</h1>
-                            <div className="text-gray-500 text-base hover:bg-gray-200 hover:font-bold">Welcome Back!</div>
+                            <div className="text-base text-gray-500 hover:bg-gray-200 hover:font-bold">Welcome Back!</div>
                         </div>
-                        <div className="ml-auto flex items-center">
+                        <div className="flex items-center ml-auto">
                             <img src={person} alt="user" className="w-8 h-8 mr-2" />
                             <p className="text-sm">
                                <a href="mailto:user@gmail.com">user@gmail.com</a>
@@ -29,39 +39,51 @@ function Home(){
                     </div>
 
                     <div className="mt-8">
-                        <div className="bg-green-500 inline-block px-4 py-1 rounded hover:bg-gray-600">
-                            <h6 className="text-white ">Available items</h6>
+                        <div className="inline-block px-4 py-1 bg-green-500 rounded hover:bg-gray-600" onClick={loadImages} disabled={imagesLoaded}>
+                            <button className="text-white">{imagesLoaded ? "These items are available" : "Show available items"}</button>
                         </div>
-                        
 
-                        <div className="flex mt-4 justify-center gap-8">
-                        <div className="flex flex-col items-center border-double border-4 border-gray-300 hover:scale-110">
-                            <img src={tomato} alt="fruits" className="block mb-2 " width="200" height="200"  />
-                            <p className="font-bold text-center text-green-600 hover:text-gray-500">TOMATO</p>
-                        </div>
-                        <div className="flex flex-col items-center border-double border-4 border-gray-300 hover:scale-110">
-                            <img src={pumpkin} alt="vegetables" className="block mb-2" width="200" height="200" />
-                            <p className="font-bold text-center mt-8 text-green-600 hover:text-gray-500">PUMPKIN</p>
-                        </div>
-                        <div className="flex flex-col items-center border-double border-4 border-gray-300 hover:scale-110">
-                            <img src={pineapple} alt="grains" className="block mb-2 " width="200" height="200" />
-                            <p className="font-bold text-center mt-8  text-green-600 hover:text-gray-500">PINEAPPLE</p>
-                        </div>
-                        
+                        {imagesLoaded && (
+                            <div className="flex justify-center gap-8 mt-4">
+                                
+                                
+                                <div className="flex flex-col items-center border-4 border-gray-300 border-double hover:scale-110">
+                                    <img src={tomato} alt="tomato" className="block mb-2" style={{ width: '150px', height: '175px' }} />
+                                    <p className="mt-4 font-bold text-center text-green-600 hover:text-gray-500">TOMATO</p>
+                                </div>
+                                
+                                <div className="flex flex-col items-center border-4 border-gray-300 border-double hover:scale-110">
+                                <img src={pumpkin} alt="pumpkin" className="block mb-2" style={{ width: '150px', height: '175px' }} />
+                                <p className="mt-4 font-bold text-center text-green-600 hover:text-gray-500">PUMPKIN</p>
+                            </div>
+    
+    
+                            <div className="flex flex-col items-center border-4 border-gray-300 border-double hover:scale-110">
+                                <img src={pineapple} alt="pineapples" className="block mb-2" style={{ width: '150px', height: '175px' }} />
+                                <p className="mt-4 font-bold text-center text-green-600 hover:text-gray-500">PINEAPPLE</p>
+                            </div>
+                            
+
+                            <div className="flex flex-col items-center border-4 border-gray-300 border-double hover:scale-110">
+                                <img src={carrot} alt="carrots" className="block mb-2" style={{ width: '150px', height: '175px' }} />
+                                <p className="mt-4 font-bold text-center text-green-600 hover:text-gray-500">CARROT</p>
+                            </div>
+
+                            
+                            <div className="flex flex-col items-center border-4 border-gray-300 border-double hover:scale-110">
+                                <img src={bellpaper} alt="bellpaper" className="block mb-2" style={{ width: '150px', height: '175px' }} />
+                                <p className="mt-4 font-bold text-center text-green-600 hover:text-gray-500">BELL PAPER</p>
+                            </div>
+                            </div>
+                        )}
                     </div>
-
-
-                    </div>
-
 
                     <div className="mt-4">
-
-
-                    <hr />
+                        <hr />
                     </div>
 
                     <div className="mt-8">
-                        <div className="bg-green-500 inline-block px-4 py-1 rounded hover:bg-gray-600">
+                        <div className="inline-block px-4 py-1 bg-green-500 rounded hover:bg-gray-600">
                             <h6 className="text-white">Data Analysis</h6>
                         </div>
                     </div>
