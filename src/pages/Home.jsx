@@ -14,7 +14,7 @@ function Home() {
         
         setTimeout(() => {
             setImagesLoaded(true);
-        }, 1000); // Adjust the delay as needed
+        }, 1000); 
     };
 
     return (
